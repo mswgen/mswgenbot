@@ -379,6 +379,9 @@ client.on("ready", () => {
             if (err) console.log(err);
         });
     }
+    setInterval(() => {
+        client.channels.get('683194993476894721').send('봇이 글릿치에 의해 안꺼지도록 하기 위해 5분 간격으로 보내는 메세지입니다.');
+    }, 300000);
 });
 
 /*client.on('messageReactionAdd', messageReaction, author => {

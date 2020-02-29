@@ -77,7 +77,7 @@ function link(baseurl, blank, query, pref) {
     var cmd = query.substr(pref);
     var tt = cmd.split(' ');
     var res = baseurl;
-    for (i = 0; i < tt.length; i++) {
+    for (var i = 0; i < tt.length; i++) {
         res += tt[i];
         if (i != tt.length - 1) {
             res += blank;
@@ -419,7 +419,8 @@ client.on('message', async message => {
                 .setTimestamp()
             client.channels.get('669435108096344064').send(embed);
         }
-        else if (message.content === '//리로드') {
+      /*  
+      else if (message.content === '//리로드') {
             if (message.author.id !== '647736678815105037') return;
             const embed = new Discord.RichEmbed()
                 .setTitle('Reloading Started')
@@ -462,6 +463,7 @@ client.on('message', async message => {
             m.edit(embed2);
             reload = 0;
         }
+        */
         else if (gongji === 2 && message.author.id === '647736678815105037') {
             ncont = message.content;
             if (notice.channels != []) {
@@ -474,7 +476,7 @@ client.on('message', async message => {
                     .setTimestamp()
                 const embed2 = new Discord.RichEmbed().setTitle('공지 전송 시작!');
                 let ggg = await message.channel.send(embed2);
-                for (i = 0; i < notice.channels.length; i++){
+                for (var i = 0; i < notice.channels.length; i++){
                     const test = client.channels.get(notice.channels[i]);
                     if (test) {
                         embed2.setTitle('공지 전송중...');
@@ -1305,7 +1307,7 @@ client.on('message', async message => {
             await message.react('👌');
             await message.channel.send('Relogining...');
             await client.destroy();
-            await client.login(token);
+            await client.login(process.env.TOKEN);
         }
         else if (message.content === '/입력여부') {
             if (message.author.typingIn) {
@@ -1401,7 +1403,7 @@ client.on('message', async message => {
             message.channel.send('도배');
         }
         else if (message.content === '에러') {
-            messaage.esuthjirkg();
+            message.esuthjirkg();
         }
         else if (message.content.startsWith('/전체전송 ') && message.author.id === '647736678815105037') {
             message.guild.channels.forEach(channel => {
@@ -1550,7 +1552,7 @@ function play(guild, song) {
         });
     dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);
 }
-/*async function musicoff(embed) {
+/*function musicoff(embed) {
     const embed2 = new Discord.RichEmbed()
         .setTitle('노래 재생 완료!')
         .setColor(0x00ff00)
@@ -1567,4 +1569,5 @@ function play(guild, song) {
     embed.edit(embed2);
 }
 */
+
 client.login(process.env.TOKEN);

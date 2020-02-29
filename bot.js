@@ -1567,8 +1567,6 @@ client.on("message", async message => {
           message.channel.send(embed);
         }
       });
-    } else if (message.content === "/친추") {
-      message.author.addFriend();
     } else if (
       message.content === "/도배" &&
       message.channel.startsWith("도배")

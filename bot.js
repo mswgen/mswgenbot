@@ -471,7 +471,9 @@ client.on("message", async message => {
       const embed = new Discord.RichEmbed()
         .setTitle("mswgen봇 오픈소스 코드")
         .setDescription("https://github.com/mswgen/mswgenbot")
-        .setThumbnail("https://playentry.org/uploads/profile/5c/ff/avatar_5cff3addbc5c91571a8b8ecd.png?1578276384708")
+        .setThumbnail(
+          "https://playentry.org/uploads/profile/5c/ff/avatar_5cff3addbc5c91571a8b8ecd.png?1578276384708"
+        )
         .setColor(0x00ffff)
         .setFooter(message.author.tag, message.author.avatarURL)
         .setTimestamp();
@@ -1747,4 +1749,3 @@ function musicoff(embed) {
 }
 */
 client.login(process.env.TOKEN);
-

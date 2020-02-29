@@ -1554,7 +1554,7 @@ function play(guild, song) {
         });
     dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);
 }
-function musicoff(embed) {
+/*async function musicoff(embed) {
     const embed2 = new Discord.RichEmbed()
         .setTitle('노래 재생 완료!')
         .setColor(0x00ff00)
@@ -1570,118 +1570,5 @@ function musicoff(embed) {
         .setTimestamp()
     embed.edit(embed2);
 }
-
-client.login(token);
-/*Invite {
-  code: 'AfEvUz',
-  presenceCount: undefined,
-  memberCount: undefined,
-  textChannelCount: undefined,
-  voiceChannelCount: undefined,
-  temporary: false,
-  maxAge: 86400,
-  uses: 0,
-  maxUses: 0,
-  inviter: ClientUser {
-    id: '657958609526849536',
-    username: 'mswgen',
-    discriminator: '2609',
-    avatar: '4abfebb76058ad91cec83e9517503841',
-    bot: true,
-    lastMessageID: '682476924794175595',
-    lastMessage: Message {
-      channel: [TextChannel],
-      deleted: false,
-      id: '682476924794175595',
-      type: 'DEFAULT',
-      content: '',
-      author: [Circular],
-      member: [GuildMember],
-      pinned: false,
-      tts: false,
-      nonce: null,
-      system: false,
-      embeds: [Array],
-      attachments: Collection [Map] {},
-      createdTimestamp: 1582785578679,
-      editedTimestamp: 1582785579036,
-      reactions: Collection [Map] {},
-      mentions: [MessageMentions],
-      webhookID: null,
-      hit: null,
-      _edits: [Array]
-    },
-    verified: true,
-    email: null,
-    localPresence: { status: 'online', game: [Object], afk: false, since: 0 },
-    _typing: Map {},
-    friends: Collection [Map] {},
-    blocked: Collection [Map] {},
-    notes: Collection [Map] {},
-    premium: null,
-    mfaEnabled: true,
-    mobile: null,
-    settings: ClientUserSettings { user: [Circular] },
-    guildSettings: Collection [Map] {}
-  },
-  channel: TextChannel {
-    type: 'text',
-    deleted: false,
-    id: '675650004068859904',
-    name: '채팅',
-    position: 2,
-    parentID: '675317307198668842',
-    permissionOverwrites: Collection [Map] {
-      '675317307198668840' => [PermissionOverwrites],
-      '675604456506916864' => [PermissionOverwrites],
-      '680615700326383636' => [PermissionOverwrites]
-    },
-    topic: '',
-    nsfw: false,
-    lastMessageID: '682476924794175595',
-    lastPinTimestamp: 1582618116155,
-    rateLimitPerUser: 0,
-    guild: Guild {
-      members: [Collection [Map]],
-      channels: [Collection [Map]],
-      roles: [Collection [Map]],
-      presences: [Collection [Map]],
-      deleted: false,
-      available: true,
-      id: '675317307198668840',
-      name: '봇 실험실',
-      icon: 'b1eb277488cb39482de5d79e06b17b87',
-      splash: null,
-      region: 'south-korea',
-      memberCount: 179,
-      large: false,
-      features: [],
-      applicationID: null,
-      afkTimeout: 3600,
-      afkChannelID: '675317307198668845',
-      systemChannelID: '677524648274952192',
-      embedEnabled: undefined,
-      verificationLevel: 1,
-      explicitContentFilter: 1,
-      mfaLevel: 0,
-      joinedTimestamp: 1581093234902,
-      defaultMessageNotifications: 'ALL',
-      ownerID: '604617640891121664',
-      _rawVoiceStates: Collection [Map] {},
-      emojis: [Collection [Map]]
-    },
-    messages: Collection [Map] {
-      '682476490880843807' => [Message],
-      '682476492348981293' => [Message],
-      '682476683521294465' => [Message],
-      '682476684263555087' => [Message],
-      '682476688247881736' => [Message],
-      '682476879663726627' => [Message],
-      '682476881181802517' => [Message],
-      '682476923603255298' => [Message],
-      '682476924794175595' => [Message]
-    },
-    _typing: Map { '647736678815105037' => [TypingData] }
-  },
-  createdTimestamp: 1582785475926
-}*/
+*/
+client.login(process.env.TOKEN);

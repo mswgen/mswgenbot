@@ -4,6 +4,7 @@ const fs = require('fs');
 const notice = require('./notice.json');
 const cheerio = require('cheerio');
 const util = require('util');
+const restart = require('./restart.json');
 const search = require("yt-search");
 const money = require('./money.json');
 const ytdl = require('ytdl-core');
@@ -20,7 +21,7 @@ var channel = 0;
 var mme = null;
 async function pingpong(text, ch) {
     const headers = {
-        'Authorization': "Basic a2V5OmNlYjQ3NGNkMzkwN2FiMWFmMTFjNGZlNmRhY2VlYjBh",
+        'Authorization': process.env.PINGPONG,
         'Content-Type': "application/json"
     };
     const dataString = {
@@ -30,7 +31,7 @@ async function pingpong(text, ch) {
     };
 
     const options = {
-        url: `https://builder.pingpong.us/api/builder/5e4e5befe4b066d4464751f5/integration/v0.2/custom/${mme.author.id}`,
+        url: `https://builder.pingpong.us/api/builder/` + process.env.PINGPONGID + `/integration/v0.2/custom/${mme.author.id}`,
         method: 'POST',
         headers: headers,
         body: JSON.stringify(dataString)
@@ -344,6 +345,13 @@ client.on('ready', () => {
         relogin = false;
         relogch = 0;
     }
+    if (restart.bool === 'yes') {
+        restart.bool = 'no';
+        client.channels.get(restart.ch).send('Complete...!');
+        fs.writeFile("./restart.json", JSON.stringify(restart), (err) => {
+            if (err) console.log(err)
+        });
+    }
 });
 
 /*client.on('messageReactionAdd', messageReaction, author => {
@@ -403,11 +411,14 @@ client.on('message', async message => {
                 if (err) console.log(err)
             });
         }
-        else if (message.content === '//종료' && message.author.id === '647736678815105037') {
-            message.channel.send('/eval process.exit()');
-        }
         else if (message.content === `//재시작` && message.author.id === '647736678815105037') {
-            await message.channel.send(`재시작 시도 중...`);
+            await message.react('👌');
+            await message.channel.send(`Restarting...`);
+            restart.ch = message.channel.id;
+            restart.bool = 'yes';
+            fs.writeFile("./restart.json", JSON.stringify(restart), (err) => {
+                if (err) console.log(err)
+            });
             await process.exit(1);
         }
         else if (message.content === 'test' && message.author.id === '657958609526849536' && message.channel.id === '670882155366449153') {
@@ -419,8 +430,8 @@ client.on('message', async message => {
                 .setTimestamp()
             client.channels.get('669435108096344064').send(embed);
         }
-      /*  
-      else if (message.content === '//리로드') {
+        /*
+        else if (message.content === '//리로드') {
             if (message.author.id !== '647736678815105037') return;
             const embed = new Discord.RichEmbed()
                 .setTitle('Reloading Started')
@@ -1403,7 +1414,7 @@ client.on('message', async message => {
             message.channel.send('도배');
         }
         else if (message.content === '에러') {
-            message.esuthjirkg();
+            messaage.esuthjirkg();
         }
         else if (message.content.startsWith('/전체전송 ') && message.author.id === '647736678815105037') {
             message.guild.channels.forEach(channel => {
@@ -1552,7 +1563,8 @@ function play(guild, song) {
         });
     dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);
 }
-/*function musicoff(embed) {
+/*
+function musicoff(embed) {
     const embed2 = new Discord.RichEmbed()
         .setTitle('노래 재생 완료!')
         .setColor(0x00ff00)
@@ -1569,5 +1581,4 @@ function play(guild, song) {
     embed.edit(embed2);
 }
 */
-
 client.login(process.env.TOKEN);

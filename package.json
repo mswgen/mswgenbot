@@ -4,7 +4,7 @@
   "description": "discord bot",
   "main": "bot.js",
   "scripts": {
-    "start": "node start.js"
+    "start": "node bot.js"
   },
   "keywords": [
     "mswgenbot"
@@ -15,6 +15,7 @@
     "cheerio": "^1.0.0-rc.3",
     "discord.js": "^11.5.1",
     "discord.js-commando": "^0.10.0",
+    "dotenv": "^8.2.0",
     "ffmpeg": "0.0.4",
     "fs": "0.0.1-security",
     "util": "^0.12.1",

@@ -5,10 +5,6 @@ const notice = require('./notice.json');
 const cheerio = require('cheerio');
 const util = require('util');
 const search = require("yt-search");
-const {
-    prefix,
-    token,
-} = require('./config.json');
 const money = require('./money.json');
 const ytdl = require('ytdl-core');
 const client = new Discord.Client();
